@@ -1,27 +1,24 @@
 package lab1;
 
-import java.util.ArrayList;
+// import javax.sound.sampled.AudioFormat;
 
 public class MorseGenerator {
   private String message;
-  private ArrayList<String> messageInMorse = new ArrayList<String>();
+  private String messageInMorse;
 
   public MorseGenerator(String message) {
-    this.message = message;
     this.message = message.toLowerCase();
   }
 
   public void getMessage() {
     for (int i = 0; i < this.message.length(); i++) {
-      this.messageInMorse.add(this.convertToMorse(this.message.charAt(i)));
+      if (this.messageInMorse == null)
+        this.messageInMorse = convertToMorse(this.message.charAt(i));
+      else
+        this.messageInMorse = String.join(" ", this.messageInMorse, convertToMorse(this.message.charAt(i)));
     }
 
-    for (String morse : this.messageInMorse) {
-      if (morse != this.messageInMorse.get(this.messageInMorse.size() - 1))
-        System.out.print(morse + " ");
-      else
-        System.out.print(morse);
-    }
+    System.out.println(messageInMorse);
   }
 
   private String convertToMorse(char i) {
@@ -148,4 +145,9 @@ public class MorseGenerator {
 
     return morse;
   }
+
+  // public void playMorseSound(String[] morse) {
+  // AudioFormat audioFormat = new AudioFormat(44100, 16, 1, true, false);
+
+  // }
 }
