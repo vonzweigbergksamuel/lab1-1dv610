@@ -1,7 +1,5 @@
 package lab1;
 
-// import javax.sound.sampled.AudioFormat;
-
 public class MorseGenerator {
   private String message;
   private String messageInMorse;
@@ -145,9 +143,4 @@ public class MorseGenerator {
 
     return morse;
   }
-
-  // public void playMorseSound(String[] morse) {
-  // AudioFormat audioFormat = new AudioFormat(44100, 16, 1, true, false);
-
-  // }
 }

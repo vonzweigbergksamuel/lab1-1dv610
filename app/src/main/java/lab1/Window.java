@@ -1,21 +1,25 @@
 package lab1;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 public class Window {
 
   private JFrame frame;
   private JPanel panel;
-  private JTextField textField;
-  private JLabel label;
+  private JTextField inputField;
+  private JTextField outputField;
+  private JLabel inputLabel;
+  private JLabel outputLabel;
+  private JButton translateButton;
 
   public Window() {
     frame = new JFrame("Morse Code Translator");
@@ -25,9 +29,13 @@ public class Window {
     frame.setLayout(new BorderLayout(10, 10));
 
     panel = new JPanel();
-    panel.setLayout(new FlowLayout());
-    panel.add(createLabel());
-    panel.add(createTextField());
+    panel.setLayout(new GridLayout(3, 2, 10, 10));
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+    panel.add(createInputLabel());
+    panel.add(createOutputLabel());
+    panel.add(createInputField());
+    panel.add(createOutputField());
 
     frame.add(panel, BorderLayout.CENTER);
   }
@@ -36,19 +44,30 @@ public class Window {
     frame.setVisible(true);
   }
 
-  private JTextField createTextField() {
-    textField = new JTextField(20);
+  private JLabel createInputLabel() {
+    inputLabel = new JLabel("Text to translate: ");
+    inputLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 
-    return textField;
+    return inputLabel;
   }
 
-  private JLabel createLabel() {
-    label = new JLabel("Morse Code: ");
-    label.setFont(new Font("Arial", Font.PLAIN, 20));
+  private JLabel createOutputLabel() {
+    outputLabel = new JLabel("Text in morse: ");
+    outputLabel.setFont(new Font("Arial", Font.PLAIN, 14));
 
-    label.setHorizontalAlignment(SwingConstants.CENTER);
-    label.setBounds(0, 0, 500, 100);
+    return outputLabel;
+  }
 
-    return label;
+  private JTextField createInputField() {
+    inputField = new JTextField(20);
+
+    return inputField;
+  }
+
+  private JTextField createOutputField() {
+    outputField = new JTextField(20);
+    outputField.setEditable(false);
+
+    return outputField;
   }
 }
