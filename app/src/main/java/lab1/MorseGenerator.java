@@ -8,7 +8,7 @@ public class MorseGenerator {
     this.message = message.toLowerCase();
   }
 
-  public void getMessage() {
+  public String getMessage() {
     for (int i = 0; i < this.message.length(); i++) {
       if (this.messageInMorse == null)
         this.messageInMorse = convertToMorse(this.message.charAt(i));
@@ -16,7 +16,7 @@ public class MorseGenerator {
         this.messageInMorse = String.join(" ", this.messageInMorse, convertToMorse(this.message.charAt(i)));
     }
 
-    System.out.println(messageInMorse);
+    return messageInMorse;
   }
 
   private String convertToMorse(char i) {

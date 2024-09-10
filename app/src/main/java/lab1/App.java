@@ -11,8 +11,5 @@ public class App {
                 window.showFrame();
             }
         });
-
-        MorseGenerator morseGenerator = new MorseGenerator("Hello world");
-        morseGenerator.getMessage();
     }
 }
